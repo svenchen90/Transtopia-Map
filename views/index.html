@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		 <meta charset='utf-8' />
+    <title></title>
+    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+		<style>
+			body { margin:0; padding:0; }
+			#map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+		<div id='map'></div>
+		<script>
+		console.log(mapboxgl.supported());
+		
+		mapboxgl.accessToken = 'pk.eyJ1Ijoic3ZlbmNoZW4iLCJhIjoiY2o5b21zeDViNWdoZzJ4cW1hdzJvaW1kaiJ9.MtnqM_zamNkRUc5jeJuHCQ';
+		var map = new mapboxgl.Map({
+			container: 'map', // container id
+			style: 'mapbox://styles/mapbox/dark-v9', // stylesheet location
+			center: [-74.50, 40], // starting position [lng, lat]
+			zoom: 9, // starting zoom
+			//bearingSnap: 7,  // ?????
+			//interactive: false,
+			hash: true,
+			// pitchWithRotate: true
+			// attributionControl: true
+			// logoPosition : 'top-left'
+			// failIfMajorPerformanceCaveat: true
+			// preserveDrawingBuffer: true
+			// scrollZoom: false
+			// boxZoom: false
+			// dragRotate: false
+			// dragPan: false
+			// keyboard: false
+			// doubleClickZoom: false
+			// touchZoomRotate: false
+			// trackResize: false
+			// bearing: -45
+			// pitch: 90
+			// renderWorldCopies: false
+		});
+		
+		var control = new mapboxgl.NavigationControl()
+		map.addControl(control);
+		map.removeControl(control);
+		
+		/*$('#map').css({
+			width: '400px',
+			height: '400px'
+		});*/
+		map.resize();
+		/*
+		console.log(map.getBounds());
+		console.log(map.getMaxBounds());
+		map.setMinZoom(15);
+		console.log(map.getMinZoom());
+		map.setMaxZoom(16);
+		console.log(map.getMaxZoom());
+		*/
+		// console.log(map.project({lat:40.32481781985075,lng:-73.1816406249971}));
+		//console.log(map.getCanvas().toDataURL())
+		/*
+		map.on('click', function (e) {
+			var features = map.queryRenderedFeatures(e.point);
+			console.log(JSON.stringify(features, null, 2));
+		});
+		*/
+		map.setStyle('mapbox://styles/mapbox/streets-v9');
+		//console.log(map.getStyle());
+		console.log(map.isStyleLoaded());
+		</script>
+  </body>
+</html>
