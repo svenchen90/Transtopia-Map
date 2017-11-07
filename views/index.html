@@ -9,6 +9,9 @@
 		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+		<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.min.js'></script>
+		<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.css' type='text/css' />
   </head>
   <body>
 		<style>
@@ -74,6 +77,16 @@
 		map.setStyle('mapbox://styles/mapbox/streets-v9');
 		//console.log(map.getStyle());
 		console.log(map.isStyleLoaded());
+		
+		
+		
+		
+		var geocoder = new MapboxGeocoder({
+			accessToken: mapboxgl.accessToken
+		});
+
+		map.addControl(geocoder);
+		
 		</script>
   </body>
 </html>
